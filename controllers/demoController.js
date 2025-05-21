@@ -1,5 +1,10 @@
 const widgetService = require('../services/widgetService');
-
+// search widgets by name substring
+exports.searchByName = async (req, res) => {
+  const q = req.query.q || '';
+  const results = await widgetService.findByName(q);
+  res.json(results);
+};
 exports.getAll = async (req, res) => {
   const widgets = await widgetService.getAll();
   res.json(widgets);

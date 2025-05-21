@@ -17,5 +17,12 @@ describe('demoService', () => {
     expect(newW).toHaveProperty('id', before + 1);
     expect((await service.getAll()).length).toBe(before + 1);
   });
+
+
+  it('filters by name substring', async () => {
+    const results = await service.findByName('a');
+    const names = results.map(r => r.name);
+    expect(names).toContain('Widget A');
+  });
 });
 
