@@ -4,6 +4,15 @@ let widgets = [
   { id: 2, name: 'Widget B' }
 ];
 
+/**
+ * Returns widgets whose `name` includes the substring (case-insensitive)
+ */
+exports.findByName = async substring => {
+  return widgets.filter(w =>
+    w.name.toLowerCase().includes(substring.toLowerCase())
+  );
+};
+
 exports.getAll = async () => widgets;
 
 exports.getById = async id => widgets.find(w => w.id === id);
